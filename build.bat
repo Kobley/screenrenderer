@@ -1,0 +1,1 @@
+gcc -o main -O2 main.cc -std=c++17 -lgdi32 

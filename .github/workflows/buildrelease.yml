@@ -1,8 +1,16 @@
 name: Build & Release
 
 on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag for the release version'
+        required: true
+        default: 'v0.0.1'
   push:
     branches: [ "main" ]
+    tags:
+      - 'v*'
   pull_request:
     branches: [ "main" ]
     
@@ -32,6 +40,7 @@ jobs:
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ github.event.inputs.tag }}
           files: |
             main.exe
         env:

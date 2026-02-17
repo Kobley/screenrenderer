@@ -16,7 +16,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
+        
+      - name: Verify files
+        run: dir
+        
       - name: Check GCC
         run: gcc --version
 
